@@ -10,7 +10,7 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState('');
 
-  const handleEmailLogin = async (e: React.FormEvent) => {
+const handleEmailLogin = async (e: React.FormEvent) => {
   e.preventDefault();
 
   if (!email.trim()) {
@@ -18,7 +18,6 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
     return;
   }
 
-  // Validación simple de dominio para la demo
   if (
     !email.endsWith('@mercadolibre.com') &&
     !email.endsWith('@zetabe.com')
@@ -29,8 +28,8 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
 
   setIsLoading(true);
 
-  // Simulación de login
   setTimeout(() => {
+    setIsLoading(false);
     onLoginSuccess();
   }, 800);
 };
