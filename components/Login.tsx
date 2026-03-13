@@ -11,37 +11,29 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
   const [email, setEmail] = useState('');
 
   const handleEmailLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email.trim()) {
-      setError('Por favor ingresa tu correo electrónico.');
-      return;
-    }
+  e.preventDefault();
 
-    try {
-      setIsLoading(true);
-      setError('');
-      
-      const response = await fetch('/api/auth/temp-login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email: email.trim() }),
-      });
+  if (!email.trim()) {
+    setError('Por favor ingresa tu correo electrónico.');
+    return;
+  }
 
-      const data = await response.json();
+  // Validación simple de dominio para la demo
+  if (
+    !email.endsWith('@mercadolibre.com') &&
+    !email.endsWith('@zetabe.com')
+  ) {
+    setError('Debes usar un correo corporativo válido.');
+    return;
+  }
 
-      if (!response.ok) {
-        throw new Error(data.error || 'Error al iniciar sesión');
-      }
+  setIsLoading(true);
 
-      onLoginSuccess();
-    } catch (err: any) {
-      console.error('Login error:', err);
-      setError(err.message || 'Error al iniciar sesión.');
-      setIsLoading(false);
-    }
-  };
+  // Simulación de login
+  setTimeout(() => {
+    onLoginSuccess();
+  }, 800);
+};
 
   const handleGoogleLogin = async () => {
     // Google login is temporarily disabled
