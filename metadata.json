@@ -1,0 +1,5 @@
+{
+  "name": "Meli Media Briefing",
+  "description": "Regional Media Briefing WebApp for Mercado Libre with strict validation logic and stepper interface.",
+  "requestFramePermissions": []
+}
