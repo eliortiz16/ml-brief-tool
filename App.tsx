@@ -271,7 +271,7 @@ const App: React.FC = () => {
   }
 
   if (appState === 'login') {
-    return <Login onLoginSuccess={checkAuth} />;
+    return <Login onLoginSuccess={() => setAppState('dashboard')} />
   }
 
   if (appState === 'dashboard' && user) {
